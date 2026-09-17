@@ -24,15 +24,15 @@ if [ $? -ne 0 ]; then
     exit 1
 fi
 
-echo ""
-echo "[2] Setting up database..."
-python3 setup_db.py
+# echo ""
+# echo "[2] Setting up database..."
+# python3 setup_db.py
 
-if [ $? -ne 0 ]; then
-    echo "ERROR: Failed to setup database"
-    echo "Make sure MySQL is installed and running"
-    exit 1
-fi
+# if [ $? -ne 0 ]; then
+#     echo "ERROR: Failed to setup database"
+#     echo "Make sure MySQL is installed and running"
+#     exit 1
+# fi
 
 echo ""
 echo "============================================================"
