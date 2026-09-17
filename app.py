@@ -1,12 +1,15 @@
 from flask import Flask, redirect, url_for, render_template, request
-import mysql.connector
+import mysql.connector, os
+from dotenv import load_dotenv
+
+load_dotenv()  # Load environment variables from .env file
 
 app = Flask(__name__)
 
 db_connection = {
-    'host': '100.68.219.79',
-    'user': 'yootz',
-    'password': 'gurabihA_2004'
+    'host': os.getenv("DB_HOST"),
+    'user': os.getenv("DB_USER"),
+    'password': os.getenv("DB_PASSWORD")
 }
 
 def init_db():
@@ -58,5 +61,4 @@ def delete_emp(employee_id):
     return redirect(url_for("index"))
 
 if __name__ == "__main__":
-    init_db()
     app.run(debug=True, host='0.0.0.0', port=5000)
