@@ -37,15 +37,12 @@ CREATE DATABASE employee_db;
 
 ### 3. Configure Database Connection
 
-Edit `app.py` and update the database configuration (around line 12):
+Edit `.env` and update the database configuration (around line 12):
 
 ```python
-db_config = {
-    'host': 'localhost',
-    'user': 'root',           # Your MySQL username
-    'password': 'your_password',  # Your MySQL password
-    'database': 'employee_db'
-}
+DB_HOST='localhost'
+DB_USER='root'
+DB_PASSWORD='your_password'
 ```
 
 ### 4. Run the Application
