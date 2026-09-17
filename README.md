@@ -37,7 +37,7 @@ CREATE DATABASE employee_db;
 
 ### 3. Configure Database Connection
 
-Edit `.env` and update the database configuration (around line 12):
+Edit `.env` and update the database configuration:
 
 ```python
 DB_HOST='localhost'
