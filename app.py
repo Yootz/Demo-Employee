@@ -60,5 +60,29 @@ def delete_emp(employee_id):
     conn.commit()
     return redirect(url_for("index"))
 
+@app.route("/api/employees", methods=["GET", "POST", "PUT", "DELETE"])
+def crud_employees():
+    if request.method == "GET":
+        c.execute("SELECT * FROM employee_db.employees")
+        employees = c.fetchall()
+        return {"employees": [dict(employee._asdict()) for employee in employees]}
+    elif request.method == "POST":
+        data = request.get_json()
+        first_name = data.get("first_name")
+        last_name = data.get("last_name")
+        pay = data.get("pay")
+        c.execute("INSERT INTO employee_db.employees (first_name, last_name, pay) VALUES (%s, %s, %s)", (first_name, last_name, pay))
+        conn.commit()
+        return {"message": "Employee added successfully"}, 201
+    elif request.method == "PUT":
+        data = request.get_json()
+        employee_id = data.get("id")
+        first_name = data.get("first_name")
+        last_name = data.get("last_name")
+        pay = data.get("pay")
+        c.execute("UPDATE employee_db.employees SET first_name=%s, last_name=%s, pay=%s WHERE id=%s", (first_name, last_name, pay, employee_id))
+        conn.commit()
+        return {"message": "Employee updated successfully"}, 200
+
 if __name__ == "__main__":
     app.run(debug=True, host='0.0.0.0', port=5000)
