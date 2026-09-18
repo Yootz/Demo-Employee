@@ -23,6 +23,16 @@
         </div>
         
         <div class="form-group">
+            <label for="roles_id">Role *</label>
+            <select id="roles_id" name="roles_id" required>
+                <option value="">Select a role</option>
+                {% for roles_list in roles_list %}
+                <option value="{{ roles_list.id }}" {% if roles_list.id == employee.roles_id %}selected{% endif %} >{{ roles_list.role_name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        
+        <div class="form-group">
             <label for="pay">Pay (Salary) *</label>
             <input type="number" id="pay" name="pay" required step="0.01" min="0" placeholder="Enter pay amount" value="{{ employee.pay }}">
         </div>

@@ -11,8 +11,19 @@
         <div class="container">
             <h1 class="logo">Employee Management System</h1>
             <ul class="nav-links">
-                <li><a href="{{ url_for('index') }}" class="{% if request.endpoint == 'index' %}active{% endif %}">Home</a></li>
-                <li><a href="{{ url_for('add_employee') }}" class="{% if request.endpoint == 'add_employee' %}active{% endif %}">Add Employee</a></li>
+                {% if request.endpoint in employee_pages%}
+                    <li><a href="{{ url_for('index') }}" class="{% if request.endpoint == 'index' %}active{% endif %}">Home</a></li>
+                    <li><a href="{{ url_for('add_employee') }}" class="{% if request.endpoint == 'add_employee' %}active{% endif %}">Add Employee</a></li>
+                    <li><a href="{{ url_for('roles') }}" class="{% if request.endpoint == 'roles' %}active{% endif %}">Roles</a></li>
+                {% elif request.endpoint in role_pages %}
+                    <li><a href="{{ url_for('roles') }}" class="{% if request.endpoint == 'roles' %}active{% endif %}">Roles</a></li>
+                    <li><a href="{{ url_for('add_role') }}" class="{% if request.endpoint == 'add_role' %}active{% endif %}">Add Role</a></li>
+                    <li><a href="{{ url_for('index') }}" class="{% if request.endpoint == 'index' %}active{% endif %}">Home</a></li>
+                {% else %}
+                    <li><a href="{{ url_for('index') }}" class="{% if request.endpoint == 'index' %}active{% endif %}">Home</a></li>
+                    <li><a href="{{ url_for('add_employee') }}" class="{% if request.endpoint == 'add_employee' %}active{% endif %}">Add Employee</a></li>
+                    <li><a href="{{ url_for('roles') }}" class="{% if request.endpoint == 'roles' %}active{% endif %}">Roles</a></li>
+                {% endif %}
             </ul>
         </div>
     </nav>

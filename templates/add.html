@@ -20,6 +20,16 @@
             <label for="last_name">Last Name *</label>
             <input type="text" id="last_name" name="last_name" required placeholder="Enter last name">
         </div>
+
+        <div class="form-group">
+            <label for="roles_id">Role *</label>
+            <select id="roles_id" name="roles_id" required>
+                <option value="">Select a role</option>
+                {% for roles_list in roles_list %}
+                <option value="{{ roles_list.id }}">{{ roles_list.role_name }}</option>
+                {% endfor %}
+            </select>
+        </div>
         
         <div class="form-group">
             <label for="pay">Pay (Salary) *</label>
