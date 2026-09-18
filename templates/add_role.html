@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}Employee List - Employee Management System{% endblock %}
+
+{% block content %}
+
+<div class="form-wrapper">
+    <h2>Add New Role</h2>
+    
+    {% if error %}
+    <div class="alert alert-danger">{{ error }}</div>
+    {% endif %}
+    
+    <form method="POST" class="employee-form">
+        <div class="form-group">
+            <label for="role_name">Role Name *</label>
+            <input type="text" id="role_name" name="role_name" required placeholder="Enter role name">
+        </div>
+        
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Add Role</button>
+            <a href="{{ url_for('roles') }}" class="btn btn-secondary">Cancel</a>
+        </div>
+    </form>
+</div>
+{% endblock %}
