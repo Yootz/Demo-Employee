@@ -1,5 +1,8 @@
+"""Flask application for managing employee and role records in a MySQL database."""
+
+import os
 from flask import Flask, redirect, url_for, render_template, request
-import mysql.connector, os
+import mysql.connector
 from dotenv import load_dotenv
 
 load_dotenv()  # Load environment variables from .env file
