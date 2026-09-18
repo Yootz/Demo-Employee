@@ -13,8 +13,12 @@ db_connection = {
 }
 
 def init_db():
-    mysql_connection = mysql.connector.connect(**db_connection)
-    return mysql_connection
+    try:
+        mysql_connection = mysql.connector.connect(**db_connection)
+        return mysql_connection
+    except mysql.connector.Error as err:
+        print(f"Error: {err}")
+        return None
 
 conn = init_db()
 c = conn.cursor(named_tuple=True)
